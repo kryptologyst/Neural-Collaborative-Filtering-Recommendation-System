@@ -1,0 +1,16 @@
+#@package model
+_target_: src.models.ncf.NeuralCollaborativeFiltering
+
+# Model architecture
+architecture: ncf  # ncf, gmf, mlp, neumf
+embedding_dim: 64
+hidden_dims: [128, 64, 32]
+dropout: 0.2
+use_batch_norm: true
+activation: relu  # relu, leaky_relu, gelu
+
+# Training specific
+learning_rate: 0.001
+weight_decay: 1e-5
+optimizer: adam  # adam, sgd, rmsprop
+scheduler: cosine  # cosine, step, plateau

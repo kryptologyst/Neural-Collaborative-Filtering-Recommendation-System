@@ -1,0 +1,26 @@
+#@package data
+_target_: src.data.synthetic.SyntheticDataLoader
+
+# Dataset parameters
+n_users: 1000
+n_items: 500
+n_interactions: 10000
+rating_scale: [1, 5]
+sparsity: 0.95
+
+# Data generation
+user_preferences:
+  n_clusters: 5
+  cluster_std: 0.5
+  
+item_features:
+  n_categories: 10
+  popularity_bias: 0.3
+  
+temporal:
+  seasonality: true
+  trend_strength: 0.1
+  
+noise:
+  level: 0.1
+  type: gaussian

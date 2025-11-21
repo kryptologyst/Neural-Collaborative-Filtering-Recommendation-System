@@ -1,0 +1,32 @@
+#@package evaluation
+_target_: src.evaluation.evaluator.RecommendationEvaluator
+
+# Metrics to compute
+metrics:
+  ranking:
+    - precision@k
+    - recall@k
+    - ndcg@k
+    - map@k
+    - hit_rate@k
+    - mrr@k
+  
+  diversity:
+    - intra_list_diversity
+    - coverage
+    - novelty
+    - popularity_bias
+  
+  fairness:
+    - demographic_parity
+    - equalized_odds
+
+# K values for ranking metrics
+k_values: [5, 10, 20, 50]
+
+# Evaluation settings
+settings:
+  leave_one_out: true
+  temporal_split: true
+  cold_start_evaluation: true
+  sample_users: null  # null for all users, int for sampling

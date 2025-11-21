@@ -1,0 +1,46 @@
+# Default configuration for Neural Collaborative Filtering
+defaults:
+  - _self_
+  - model: ncf
+  - data: synthetic
+  - evaluation: standard
+
+# Global settings
+seed: 42
+device: auto  # auto, cpu, cuda
+log_level: INFO
+
+# Training settings
+training:
+  batch_size: 256
+  learning_rate: 0.001
+  epochs: 50
+  early_stopping_patience: 10
+  validation_split: 0.2
+  test_split: 0.1
+
+# Model settings
+model:
+  embedding_dim: 64
+  hidden_dims: [128, 64, 32]
+  dropout: 0.2
+  use_batch_norm: true
+
+# Data settings
+data:
+  min_interactions_per_user: 5
+  min_interactions_per_item: 5
+  negative_sampling_ratio: 4
+  temporal_split: true
+
+# Evaluation settings
+evaluation:
+  metrics: [precision@10, recall@10, ndcg@10, map@10, hit_rate@10]
+  k_values: [5, 10, 20]
+  diversity_metrics: [intra_list_diversity, coverage]
+  
+# Demo settings
+demo:
+  port: 8501
+  host: "0.0.0.0"
+  max_recommendations: 20
